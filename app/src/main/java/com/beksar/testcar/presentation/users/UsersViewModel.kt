@@ -1,8 +1,8 @@
 package com.beksar.testcar.presentation.users
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.beksar.testcar.core.BaseViewModel
 import com.beksar.testcar.core.Status
 import com.beksar.testcar.domain.model.User
 import com.beksar.testcar.domain.useCase.GetUsersUseCase
@@ -13,20 +13,23 @@ import javax.inject.Inject
 @HiltViewModel
 class UsersViewModel @Inject constructor(
     private val usersUseCase: GetUsersUseCase
-) : ViewModel() {
-
+) : BaseViewModel() {
+    var userId = 0
     val usersLiveData = MutableLiveData<MutableList<User>>()
-    val statusLiveData = MutableLiveData<Status>()
 
-    fun loadUsers(page: Int = 1) {
+    fun loadUsers() {
         viewModelScope.launch {
-            statusLiveData.value = Status.SHOW_LOADING
-            usersUseCase.execute(page, {
-                usersLiveData.value = it.toMutableList()
+            setLoadingStatus(Status.SHOW_LOADING)
+            usersUseCase.execute(userId, {
+                val list = mutableListOf<User>()
+                usersLiveData.value?.let { it1 -> list.addAll(it1) }
+                list.addAll(it)
+                usersLiveData.value = list
             }, {
-                statusLiveData.value = Status.ERROR
+                setLoadingStatus(Status.ERROR)
             })
-            statusLiveData.value = Status.HIDE_LOADING
+            setLoadingStatus(Status.HIDE_LOADING)
+            userId += 30
         }
     }
 
