@@ -12,7 +12,7 @@ abstract class BaseAlertDialog : DialogFragment() {
     /**
      * Transparent level for background dialog
      * */
-    var dimAmount: Float = 0.6F
+    private var dimAmount: Float = 0.6F
 
     abstract fun isCancelableDialog(): Boolean
 

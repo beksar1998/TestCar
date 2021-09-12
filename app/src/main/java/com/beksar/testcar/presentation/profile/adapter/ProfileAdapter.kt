@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.beksar.testcar.databinding.ItemProfileBinding
-import com.beksar.testcar.domain.model.ProfileData
+import com.beksar.testcar.domain.model.Profile
 
 
-class ProfileAdapter : ListAdapter<ProfileData, ProfileAdapter.ProfileViewHolder>(diffCallback) {
+class ProfileAdapter : ListAdapter<Profile, ProfileAdapter.ProfileViewHolder>(diffCallback) {
 
     inner class ProfileViewHolder(private val binding: ItemProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -35,17 +35,17 @@ class ProfileAdapter : ListAdapter<ProfileData, ProfileAdapter.ProfileViewHolder
 
 
 private val diffCallback =
-    object : DiffUtil.ItemCallback<ProfileData>() {
+    object : DiffUtil.ItemCallback<Profile>() {
         override fun areItemsTheSame(
-            oldItem: ProfileData,
-            newItem: ProfileData
+            oldItem: Profile,
+            newItem: Profile
         ): Boolean {
             return oldItem.title == newItem.title
         }
 
         override fun areContentsTheSame(
-            oldItem: ProfileData,
-            newItem: ProfileData
+            oldItem: Profile,
+            newItem: Profile
         ): Boolean {
             return oldItem == newItem
         }
