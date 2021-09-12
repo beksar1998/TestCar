@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_user"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/userNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/username"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/userIdText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/id"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userNameText"
+            app:layout_constraintTop_toBottomOf="@id/userNameText" />
+
+
+        <TextView
+            android:id="@+id/userName"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/userNameText"
+            app:layout_constraintStart_toEndOf="@id/userNameText"
+            app:layout_constraintTop_toTopOf="@id/userNameText"
+            tools:text="@string/username" />
+
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/userId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/userIdText"
+            app:layout_constraintStart_toEndOf="@id/userIdText"
+            app:layout_constraintTop_toTopOf="@id/userIdText"
+            tools:text="@string/id" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
